@@ -6,7 +6,7 @@ the current word. Most programming languages use either CamelCase
 ("anIdentifier") or underscore_notation ("an_identifier") naming conventions
 for identifiers. The best way to navigate inside those identifiers using Vim
 built-in motions is the [count]f{char} motion, i.e. f{uppercase-char} or f_,
-respectively. But we can make this easier: 
+respectively. But we can make this easier:
 
 This script defines motions ',w', ',b' and ',e' (similar to 'w', 'b', 'e'),
 which do not move word-wise (forward/backward), but Camel-wise; i.e. to word
@@ -15,17 +15,17 @@ where words are delimited by underscore ('_') characters. From here on, both
 CamelCase and underscore_notation entities are referred to as "words" (in double
 quotes). Just like with the regular motions, a [count] can be prepended to move
 over multiple "words" at once. Outside of "words" (e.g. in non-keyword
-characters like // or ;), the new motions move just like the regular motions. 
+characters like // or ;), the new motions move just like the regular motions.
 
 Vim provides a built-in 'iw' text object called 'inner word', which works in
 operator-pending and visual mode. Analog to that, this script defines inner
 "word" motions 'i,w', 'i,b' and 'i,e', which select the "word" (or multiple
-"words" if a [count] is given) where the cursor is located. 
+"words" if a [count] is given) where the cursor is located.
 
 USAGE
 Use the new motions',w',',b' and ',e' in normal mode, operator-pending mode (cp.
 :help operator), and visual mode. For example, type 'bc,w' to change 'Camel' in
-'CamelCase' to something else. 
+'CamelCase' to something else.
 
 EXAMPLE: motions
 Given the following CamelCase identifiers in a source code fragment:
@@ -49,7 +49,7 @@ v3i,w selects script_31337_path_and_[name_without_extension_]11
 v3i,b selects script_31337_[path_and_name]_without_extension_11
 v3i,e selects script_31337_path_and_[name_without_extension]_11
 Instead of visual mode, you can also use c3i,w to change, d3i,w to delete,
-gU3i,w to upper-case, and so on. 
+gU3i,w to upper-case, and so on.
 
 Source: Based on http://vim.wikia.com/wiki/Moving_through_camel_case_words by
 Anthony Van Ham.
