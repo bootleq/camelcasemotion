@@ -133,6 +133,15 @@ if exists('g:loaded_camelcasemotion') || (v:version < 700)
 endif
 let g:loaded_camelcasemotion = 1
 
+" Options ---------------------------------------------------------------------
+function! s:SetDefaultOption(opt, val)
+    if ! exists("g:".a:opt)
+	let g:{a:opt} = a:val
+    endif
+endfunction
+
+call s:SetDefaultOption("camelcasemotion_leader", ',')
+
 "- mappings -------------------------------------------------------------------
 " The count is passed into the function through the special variable 'v:count1',
 " which is easier than misusing the :[range] that :call supports.
@@ -147,11 +156,12 @@ let g:loaded_camelcasemotion = 1
 
 function! s:CreateMotionMappings()
     " Create mappings according to this template:
-    " (* stands for the mode [nov], ? for the underlying motion [wbe].)
+    " (* stands for the mode [nov], ? for the underlying motion [wbe],
+    "	and <camelcasemotion_leader> for g:camelcasemotion_leader option.)
     "
     " *noremap <Plug>CamelCaseMotion_? :<C-U>call camelcasemotion#Motion('?',v:count1,'*')<CR>
     " if ! hasmapto('<Plug>CamelCaseMotion_?', '*')
-    "	  *map <silent> ,? <Plug>CamelCaseMotion_?
+    "	  *map <silent> <camelcasemotion_leader>? <Plug>CamelCaseMotion_?
     " endif
 
     for l:mode in ['n', 'o', 'v']
@@ -159,7 +169,7 @@ function! s:CreateMotionMappings()
 	    let l:targetMapping = '<Plug>CamelCaseMotion_' . l:motion
 	    execute l:mode . 'noremap ' . l:targetMapping . ' :<C-U>call camelcasemotion#Motion(''' . l:motion . ''',v:count1,''' . l:mode . ''')<CR>'
 	    if ! hasmapto(l:targetMapping, l:mode)
-		execute (l:mode ==# 'v' ? 'x' : l:mode) . 'map <silent> ,' . l:motion . ' ' . l:targetMapping
+		execute (l:mode ==# 'v' ? 'x' : l:mode) . 'map <silent> ' . g:camelcasemotion_leader . l:motion . ' ' . l:targetMapping
 	    endif
 	endfor
     endfor
@@ -177,11 +187,12 @@ endfunction
 " We deviate from that and always override the existing selection.
 function! s:CreateInnerMotionMappings()
     " Create mappings according to this template:
-    " (* stands for the mode [ov], ? for the underlying motion [wbe].)
+    " (* stands for the mode [ov], ? for the underlying motion [wbe],
+    "	and <camelcasemotion_leader> for g:camelcasemotion_leader option.)
     "
     " *noremap <Plug>CamelCaseMotion_i? :<C-U>call camelcasemotion#InnerMotion('?',v:count1)<CR>
     " if ! hasmapto('<Plug>CamelCaseInnerMotion_i?', '*')
-    "	  *map <silent> i,? <Plug>CamelCaseInnerMotion_i?
+    "	  *map <silent> i<camelcasemotion_leader>? <Plug>CamelCaseInnerMotion_i?
     " endif
 
     for l:mode in ['o', 'v']
@@ -189,7 +200,7 @@ function! s:CreateInnerMotionMappings()
 	    let l:targetMapping = '<Plug>CamelCaseMotion_i' . l:motion
 	    execute l:mode . 'noremap ' . l:targetMapping . ' :<C-U>call camelcasemotion#InnerMotion(''' . l:motion . ''',v:count1)<CR>'
 	    if ! hasmapto(l:targetMapping, l:mode)
-		execute (l:mode ==# 'v' ? 'x' : l:mode) . 'map <silent> i,' . l:motion . ' ' . l:targetMapping
+		execute (l:mode ==# 'v' ? 'x' : l:mode) . 'map <silent> i' . g:camelcasemotion_leader . l:motion . ' ' . l:targetMapping
 	    endif
 	endfor
     endfor
