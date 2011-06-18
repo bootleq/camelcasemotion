@@ -1,0 +1,5 @@
+Forked from vim-scripts/camelcasemotion:  
+https://github.com/vim-scripts/camelcasemotion
+
+There's already another active fork by bkad:  
+https://github.com/bkad/CamelCaseMotion
