@@ -85,9 +85,13 @@ DEPENDENCIES					*camelcasemotion-dependencies*
 ==============================================================================
 CONFIGURATION				       *camelcasemotion-configuration*
 
-If you want to use different mappings, map your keys to the
-<Plug>CamelCaseMotion_? mapping targets _before_ sourcing this script (e.g. in
-your|vimrc|).
+If you want to use different mappings, set 'g:camelcasemotion_leader' in your
+vimrc (requires forked version: https://github.com/bootleq/camelcasemotion) >
+    let g:camelcasemotion_leader='g'
+
+
+For official version, map your keys to the <Plug>CamelCaseMotion_?
+mapping targets _before_ sourcing this script (e.g. in your|vimrc|).
 
 EXAMPLE: Replace the default|w|,|b| and|e| mappings instead of defining
 additional mappings|,w|,|,b| and|,e|: >
