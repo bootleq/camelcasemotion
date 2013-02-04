@@ -148,27 +148,27 @@ IDEAS						       *camelcasemotion-ideas*
   end of the buffer and temporarily append a new line / space character to
   work around the end-of-buffer problem. Unfortunately, the addition cannot be
   undone as part of the motion (won't work then), so we'd have to use an
-  autocmd to remove it later. 
+  autocmd to remove it later.
 
 - Make separator character (currently underscore) configurable so that dashes,
   asterisks, etc. can be added as well. Idea is to replace the single /_/ with
   a collection /[-_*]/ built from g:CamelCaseMotion_SeparatorCharacters. Check
   out interference with containment in 'iskeyword' and think through need to
-  buffer-local setting. (Submitted anonymously 13-Nov-2010 on Vim Tips Wiki.) 
+  buffer-local setting. (Submitted anonymously 13-Nov-2010 on Vim Tips Wiki.)
 
 ==============================================================================
 HISTORY						     *camelcasemotion-history*
 
 1.52	12-Nov-2011
 - FIX: Correct forward-to-end motion over lowercase part in "lowerCamel".
-  Found this by chance in GitHub fork by Kevin Lee (bkad). 
+  Found this by chance in GitHub fork by Kevin Lee (bkad).
 - BUG: Correct wrong stop on second letter of ACRONYM at the beginning of a
-  word "AXBCText". 
+  word "AXBCText".
 - The motion functionality is automatically tested via a runVimTests
-  (vimscript #2565) test suite. 
+  (vimscript #2565) test suite.
 
 1.51	30-Sep-2011
-Use <silent> for <Plug> mapping instead of default mapping. 
+Use <silent> for <Plug> mapping instead of default mapping.
 
 1.50	05-May-2009
 - Do not create mappings for select mode; according to |Select-mode|,
@@ -217,7 +217,7 @@ Started development based on vimtip #1016 by Anthony Van Ham.
 
 ==============================================================================
 Copyright: (C) 2007-2011 Ingo Karkat
-The VIM LICENSE applies to this script; see |copyright|. 
+The VIM LICENSE applies to this script; see |copyright|.
 
 Maintainer:	Ingo Karkat <ingo@karkat.de>
 ==============================================================================

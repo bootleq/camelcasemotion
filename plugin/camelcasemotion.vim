@@ -1,17 +1,17 @@
 " camelcasemotion.vim: Motion through CamelCaseWords and underscore_notation.
 "
 " DEPENDENCIES:
-"   - Requires Vim 7.0 or higher. 
-"   - camelcasemotion.vim autoload script. 
+"   - Requires Vim 7.0 or higher.
+"   - camelcasemotion.vim autoload script.
 "
 " Copyright: (C) 2007-2011 Ingo Karkat
-"   The VIM LICENSE applies to this script; see ':help copyright'. 
+"   The VIM LICENSE applies to this script; see ':help copyright'.
 "
 " Source: Based on vimtip #1016 by Anthony Van Ham.
 " Maintainer:	Ingo Karkat <ingo@karkat.de>
-" REVISION	DATE		REMARKS 
+" REVISION	DATE		REMARKS
 "   1.51.020	30-Sep-2011	Use <silent> for <Plug> mapping instead of
-"				default mapping. 
+"				default mapping.
 "   1.50.019	05-May-2009	Do not create mappings for select mode;
 "				according to|Select-mode|, printable character
 "				commands should delete the selection and insert

@@ -4,15 +4,15 @@
 "   - Requires Vim 7.0 or higher.
 "
 " Copyright: (C) 2007-2011 Ingo Karkat
-"   The VIM LICENSE applies to this script; see ':help copyright'. 
+"   The VIM LICENSE applies to this script; see ':help copyright'.
 "
 " Maintainer:	Ingo Karkat <ingo@karkat.de>
-" REVISION	DATE		REMARKS 
+" REVISION	DATE		REMARKS
 "   1.52.002	18-Oct-2011	FIX: Correct forward-to-end motion over
 "				lowercase part in "lowerCamel". Found this by
-"				chance in GitHub fork by Kevin Lee (bkad). 
+"				chance in GitHub fork by Kevin Lee (bkad).
 "				BUG: Correct wrong stop on second letter of
-"				ACRONYM at the beginning of a word "AXBCText". 
+"				ACRONYM at the beginning of a word "AXBCText".
 "   1.50.001	05-May-2009	Do not create mappings for select mode;
 "				according to|Select-mode|, printable character
 "				commands should delete the selection and insert
@@ -39,7 +39,7 @@ function! s:Move( direction, count, mode )
 	    " number | ACRONYM followed by CamelCase or number | lowercase followed by CamelCase, ACRONYM, or number | CamelCase | underscore_notation | non-keyword | word
 	    " Note: Branches are ordered from specific to unspecific so that
 	    " in case of multiple matches, the more specific (and usually
-	    " longer) one it used. 
+	    " longer) one it used.
 	    call search( '\d\+\|\u\+\ze\%(\u\l\|\d\)\|\l\+\ze\%(\u\|\d\)\|\u\l\+\|\%(\a\|\d\)\+\ze_\|\%(\k\@!\S\)\+\|\%(_\@!\k\)\+\>', 'We' )
 	    " Note: word must be defined as '\k\>'; '\>' on its own somehow
 	    " dominates over the previous branch. Plus, \k must exclude the
@@ -83,7 +83,7 @@ function! s:Move( direction, count, mode )
 	    " beginning of ...
 	    " word | empty line | non-keyword after whitespaces | non-whitespace after word | number | start of ACRONYM followed by CamelCase or number | CamelCase | underscore followed by ACRONYM, Camel, lowercase or number
 	    " Note: Branches are ordered from unspecific to specific, so that
-	    " the cursor moves the least amount of text. 
+	    " the cursor moves the least amount of text.
 	    call search( '\<\D\|^$\|\%(^\|\s\)\+\zs\k\@!\S\|\>\S\|\d\+\|\u\@<!\u\+\ze\%(\u\l\|\d\)\|\u\l\+\|_\zs\%(\u\+\|\u\l\+\|\l\+\|\d\+\)', 'W' . l:direction )
 	    " Note: word must be defined as '\<\D' to avoid that a word like
 	    " 1234Test is moved over as [1][2]34[T]est instead of [1]234[T]est
